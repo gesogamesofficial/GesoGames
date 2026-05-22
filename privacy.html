@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>利用規約への同意 — Quiz Master</title>
+<title>利用規約</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,8 +48,8 @@ body {
 }
 
 .shell {
-  width: 100%;
-  max-width: 560px;
+  width: min(100%, 92vw);
+  max-width: 880px;
   animation: fadeUp 0.5s ease both;
 }
 
@@ -174,7 +174,8 @@ body {
 }
 
 .scroll-box {
-  height: clamp(200px, 35vw, 260px);
+  min-height: 260px;
+  max-height: min(55vh, 420px);
   overflow-y: auto;
   border: 1px solid var(--border2);
   border-radius: var(--r-sm);
@@ -233,6 +234,44 @@ body {
   content: '–';
   color: var(--border2);
 }
+
+/* Improved layout: table of contents and section cards */
+.toc {
+  background: linear-gradient(180deg, rgba(33,150,243,0.04), transparent);
+  border: 1px solid rgba(33,150,243,0.08);
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.toc h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.toc ul { list-style: none; padding-left: 0; display: flex; flex-direction: column; gap: 6px; }
+.toc a { text-decoration: none; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 13px; }
+
+.terms-section-item {
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,250,252,0.6));
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+.terms-section-item h2 {
+  font-size: 16px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.terms-section-item .terms-p,
+.terms-section-item .terms-ul li {
+  color: var(--muted);
+  font-size: 13px;
+}
+.terms-ul li::before { content: '•'; color: var(--accent-dim); margin-right: 8px; }
+.terms-ul { padding-left: 12px; }
+
+.scroll-box { padding: 16px; }
 
 .hint {
   display: flex;
@@ -443,142 +482,131 @@ body {
     <div class="hd">
       <div class="tag">
         <span class="tag-dot"></span>
-        Quiz Master
+        CarQuiz
       </div>
 
       <h1>
-        ゲームを始める<br>
-        前に
+        ゲームを始める前に
       </h1>
 
       <p>
-        利用規約を確認し、<br>
-        同意してからスタートしてください。
+        利用規約を確認してからスタートしてください。
       </p>
     </div>
 
-    <div class="steps">
-
-      <div class="step done" id="s1">
-        <div class="step-num">✓</div>
-        <span>規約を読む</span>
-      </div>
-
-      <div class="step-line"></div>
-
-      <div class="step active" id="s2">
-        <div class="step-num" id="s2num">2</div>
-        <span>同意する</span>
-      </div>
-
-      <div class="step-line"></div>
-
-      <div class="step" id="s3">
-        <div class="step-num" id="s3num">3</div>
-        <span>開始</span>
-      </div>
-
-    </div>
 
     <div class="body">
 
       <div class="scroll-box">
 
-        <div class="terms-section">
-          <p class="terms-h">01 / はじめに</p>
-          <p class="terms-p">
-            本利用規約は、当クイズゲームの利用条件を定めるものです。
-          </p>
-        </div>
-
-        <div class="terms-section">
-          <p class="terms-h">02 / 禁止事項</p>
-
-          <ul class="terms-ul">
-            <li>不正行為</li>
-            <li>スコア改ざん</li>
-            <li>サーバー攻撃</li>
+        <section id="sec0" class="terms-section-item">
+          <p>本利用規約（以下「本規約」）は、開発者（以下「当方」）が提供するクイズゲーム（以下「本アプリ」）の利用条件を定めます。ユーザーは本規約に同意した上で本アプリを利用してください。</p>
+        </section>
+        
+        <nav class="toc" aria-label="目次">
+          <h3>目次</h3>
+          <ul>
+            <li><a href="#sec1">第1条 適用・プライバシー</a></li>
+            <li><a href="#sec2">第2条 利用資格・未成年者の利用</a></li>
+            <li><a href="#sec3">第3条 禁止事項</a></li>
+            <li><a href="#sec4">第4条 利用制限</a></li>
+            <li><a href="#sec5">第5条 提供の停止等</a></li>
+            <li><a href="#sec6">第6条 知的財産権</a></li>
+            <li><a href="#sec7">第7条 免責事項</a></li>
+            <li><a href="#sec8">第8条 規約の変更</a></li>
+            <li><a href="#sec9">第9条 準拠法・裁判管轄</a></li>
           </ul>
-        </div>
+        </nav>
 
         <div class="terms-section">
-          <p class="terms-h">03 / 免責事項</p>
 
-          <p class="terms-p">
-            当サービス利用による損害について、運営は責任を負いません。
-          </p>
-        </div>
+          <section id="sec1" class="terms-section-item">
+            <h2>第1条（適用・プライバシー）</h2>
+            <ul class="terms-ul">
+              <li>本規約は、ユーザーと当方との間の本アプリの利用に関わる一切の関係に適用されるものとします。</li>
+              <li>当方が本アプリを通じて取得するユーザーの個人情報およびインフォマティブデータ（端末情報、広告識別子等）の取り扱いについては、別途定めるプライバシーポリシーに従うものとします。</li>
+            </ul>
+          </section>
 
-        <div class="hint">
-          <div class="hint-icon">i</div>
-          内容を確認後、同意してください
+          <section id="sec2" class="terms-section-item">
+            <h2>第2条（利用資格・未成年者の利用）</h2>
+            <ul class="terms-ul">
+              <li>ユーザーが未成年者である場合は、親権者等の法定代理人の同意を得たうえで本アプリを利用するものとします。</li>
+              <li>本規約に同意した時点で未成年であったユーザーが、成年に達した後に本アプリを利用した場合、当該ユーザーは未成年時の利用行為すべてを追認したものとみなします。</li>
+            </ul>
+          </section>
+
+          <section id="sec3" class="terms-section-item">
+            <h2>第3条（禁止事項）</h2>
+            <p class="terms-p">ユーザーは、本アプリの利用にあたり、以下の行為をしてはなりません。</p>
+            <ul class="terms-ul">
+              <li>法令または公序良俗に違反する行為</li>
+              <li>本アプリが参照する外部サーバーやネットワークの機能を破壊したり、妨害したりする行為（サーバー攻撃等）</li>
+              <li>当方が意図しないプログラムの動作を利用する行為（バグの悪用等）、外部ツールを用いたスコアやゲーム内データの改ざん等の不正行為</li>
+              <li>本アプリの逆アセンブル、逆コンパイル、リバースエンジニアリング等の解析行為</li>
+              <li>当方、本アプリの他のユーザー、または第三者の知的財産権、肖像権、プライバシー、名誉その他の権利または利益を侵害する行為</li>
+              <li>その他、当方が不適切と判断する行為</li>
+            </ul>
+          </section>
+
+          <section id="sec4" class="terms-section-item">
+            <h2>第4条（利用制限）</h2>
+            <p class="terms-p">当方は、ユーザーが本規約のいずれかに該当する行為を行ったと判断した場合、事前の通知なく、当該ユーザーに対して本アプリの全部もしくは一部の利用を制限（アクセス拒否等）することができるものとします。</p>
+          </section>
+
+          <section id="sec5" class="terms-section-item">
+            <h2>第5条（本アプリの提供の停止等）</h2>
+            <p class="terms-p">当方は、以下のいずれかの事由があると判断した場合、ユーザーに事前に通知することなく本アプリの全部または一部の提供（外部サーバーとの通信を含む）を停止または中断することができるものとします。</p>
+            <ul class="terms-ul">
+              <li>本アプリにかかるシステムや外部連携サーバーの保守点検または更新を行う場合</li>
+              <li>地震、落雷、火災、停電または天災などの不可抗力により、本アプリの提供が困難となった場合</li>
+              <li>その他、当方が本アプリの提供が困難と判断した場合</li>
+            </ul>
+          </section>
+
+          <section id="sec6" class="terms-section-item">
+            <h2>第6条（知的財産権）</h2>
+            <p class="terms-p">本アプリに関するプログラム、デザイン、クイズ問題、テキスト等の知的財産権は、当方に帰属します。ユーザーは、本アプリの利用に必要な範囲を超えて、これらを複製、改変、転載等することはできません。</p>
+            <p class="terms-p">前項の規定にかかわらず、本アプリ内で使用されているフォント、画像素材、音声素材、ミドルウェア等の外部提供素材に関する知的財産権は、それぞれの権利者に帰属し、各素材の定めるライセンス条項が適用されます。</p>
+          </section>
+
+          <section id="sec7" class="terms-section-item">
+            <h2>第7条（免責事項）</h2>
+            <ul class="terms-ul">
+              <li>当方は、本アプリに事実上または法律上の瑕疵（安全性、信頼性、正確性、完全性、有効性、特定の目的への適合性、セキュリティなどに関する欠陥、エラーやバグ、権利侵害などを含みます。）がないことを明示的にも黙示的にも保証しておりません。</li>
+              <li>当方は、本アプリに起因してユーザーに生じたあらゆる損害について、当方の故意または重過失による場合を除き、一切の責任を負いません。</li>
+              <li>本アプリ内において表示される第三者の広告、または当該広告のリンク先が提供する商品、サービス、情報等について、当方は何ら保証せず、これによりユーザーに生じた損害について一切の責任を負いません。</li>
+            </ul>
+          </section>
+
+          <section id="sec8" class="terms-section-item">
+            <h2>第8条（利用規約の変更）</h2>
+            <ul class="terms-ul">
+              <li>当方は、必要と判断した場合には、ユーザーの個別の同意を得ることなく本規約を変更することができるものとします。</li>
+              <li>当方は、本規約を変更する場合、変更後の本規約の効力発生時期を定め、当該効力発生時期までに、本アプリ内または当方が適当と判断するウェブサイト上への掲示その他の方法により、本規約を変更する旨、変更後の本規約の内容およびその効力発生時期をユーザーに周知するものとします。</li>
+              <li>ユーザーが、前項の周知後に本アプリを利用した場合、変更後の本規約に同意したものとみなします。</li>
+            </ul>
+          </section>
+
+          <section id="sec9" class="terms-section-item">
+            <h2>第9条（準拠法・裁判管轄）</h2>
+            <ul class="terms-ul">
+              <li>本規約の解釈にあたっては、日本法を準拠法とします。</li>
+              <li>本アプリに関して紛争が生じた場合には、当方の所在地を管轄する地方裁判所を専属的合意管轄とします。</li>
+            </ul>
+          </section>
+
         </div>
 
       </div>
 
     </div>
-
-    <div class="ft">
-
-      <label class="check-row" for="agreeInput">
-
-        <div class="check-wrap">
-
-          <input
-            type="checkbox"
-            id="agreeInput"
-            class="check-input"
-          >
-
-          <div class="check-box">
-            <div class="check-mark"></div>
-          </div>
-
-        </div>
-
-        <div class="check-label">
-          <strong>利用規約に同意します</strong>
-          <small>内容確認後チェックしてください</small>
-        </div>
-
-      </label>
-
-      <button type="button" id="startBtn" class="btn-start" disabled>
-        ゲームを開始する →
-      </button>
-
-      <p class="ft-note">
-        同意しない場合は閉じてください
-      </p>
-
-    </div>
-
-  </div>
-
-  <!-- SUCCESS -->
-
-  <div class="success-view" id="successView">
-
-    <div class="check-anim">
-      ✓
-    </div>
-
-    <h2>同意が完了しました</h2>
-
-    <p>
-      ゲームを開始できます。
-    </p>
-
-    <button class="btn-go" onclick="location.reload()">
-      ゲームへ進む →
-    </button>
 
   </div>
 
 </div>
 
 <script>
-const agreeInput = document.getElementById('agreeInput');
 const startBtn = document.getElementById('startBtn');
 
 const s2 = document.getElementById('s2');
@@ -586,27 +614,6 @@ const s3 = document.getElementById('s3');
 
 const s2num = document.getElementById('s2num');
 const s3num = document.getElementById('s3num');
-
-agreeInput.addEventListener('change', () => {
-
-  startBtn.disabled = !agreeInput.checked;
-
-  if (agreeInput.checked) {
-
-    s2.className = 'step done';
-    s2num.textContent = '✓';
-
-    s3.className = 'step active';
-
-  } else {
-
-    s2.className = 'step active';
-    s2num.textContent = '2';
-
-    s3.className = 'step';
-    s3num.textContent = '3';
-  }
-});
 
 startBtn.addEventListener('click', () => {
 
