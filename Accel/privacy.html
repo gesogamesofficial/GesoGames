@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>利用規約</title>
+<title>利用規約・プライバシーポリシー</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +35,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* WebViewでスクロールバグが起きないよう標準的な文書フローに */
 body {
   font-family: 'Noto Serif JP', serif;
   background: var(--bg);
@@ -44,7 +43,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* 中央寄せの設定 */
 .shell {
   width: min(100%, 92vw);
   max-width: 880px;
@@ -109,7 +107,6 @@ body {
   padding: clamp(1.25rem, 5vw, 2rem);
 }
 
-/* WebView用に自然に下までスクロールさせる設計 */
 .scroll-box {
   border: 1px solid var(--border2);
   border-radius: var(--r-sm);
@@ -124,7 +121,9 @@ body {
   font-size: clamp(12px, 2.5vw, 13px);
   color: var(--muted);
   line-height: 1.8;
+  margin-bottom: 0.5rem;
 }
+.terms-p:last-child { margin-bottom: 0; }
 
 .terms-ul {
   list-style: none;
@@ -133,7 +132,9 @@ body {
   flex-direction: column;
   gap: 4px;
   padding-left: 12px;
+  margin-bottom: 0.5rem;
 }
+.terms-ul:last-child { margin-bottom: 0; }
 
 .terms-ul li {
   font-size: clamp(12px, 2.5vw, 13px);
@@ -176,6 +177,15 @@ body {
   font-size: 16px;
   color: var(--text);
   margin-bottom: 8px;
+  border-left: 4px solid var(--accent);
+  padding-left: 8px;
+}
+
+.date-text {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: right;
+  margin-top: 16px;
 }
 
 @media (max-width: 420px) {
@@ -195,20 +205,20 @@ body {
         CarQuiz
       </div>
       <h1>ゲームを始める前に</h1>
-      <p>利用規約を確認してからスタートしてください。</p>
+      <p>利用規約とプライバシーポリシーを確認してからスタートしてください。</p>
     </div>
 
     <div class="body">
       <div class="scroll-box">
 
         <section id="sec0" class="terms-section-item">
-          <p class="terms-p">本利用規約（以下「本規約」）は、開発者（以下「当方」）が提供するクイズゲーム（以下「本アプリ」）の利用条件を定めます。ユーザーは本規約に同意した上で本アプリを利用してください。</p>
+          <p class="terms-p">本規約およびプライバシーポリシーは、開発者（以下「当方」）が提供するクイズゲーム（以下「本アプリ」）の利用条件およびユーザーの情報の取り扱いを定めます。ユーザーはこれらに同意した上で本アプリを利用してください。</p>
         </section>
         
         <nav class="toc" aria-label="目次">
           <h3>目次</h3>
           <ul>
-            <li><a href="#sec1">第1条 適用・プライバシー</a></li>
+            <li><a href="#sec1">第1条 適用・個人情報の取り扱い</a></li>
             <li><a href="#sec2">第2条 利用資格・未成年者の利用</a></li>
             <li><a href="#sec3">第3条 禁止事項</a></li>
             <li><a href="#sec4">第4条 利用制限</a></li>
@@ -216,16 +226,17 @@ body {
             <li><a href="#sec6">第6条 知的財産権</a></li>
             <li><a href="#sec7">第7条 免責事項</a></li>
             <li><a href="#sec8">第8条 規約の変更</a></li>
-            <li><a href="#sec9">第9条 準拠法・裁判管轄</a></li>
+            <li><a href="#sec9">第9条 準拠法・裁判管轄・お問い合わせ</a></li>
+            <li><a href="#privacy_policy">◆ プライバシーポリシー（広告配信について）</a></li>
           </ul>
         </nav>
 
         <div class="terms-section">
           <section id="sec1" class="terms-section-item">
-            <h2>第1条（適用・プライバシー）</h2>
+            <h2>第1条（適用・個人情報の取り扱い）</h2>
             <ul class="terms-ul">
               <li>本規約は、ユーザーと当方との間の本アプリの利用に関わる一切の関係に適用されるものとします。</li>
-              <li>当方が本アプリを通じて取得するユーザーの個人情報およびインフォマティブデータ（端末情報、広告識別子等）の取り扱いについては、別途定めるプライバシーポリシーに従うものとします。</li>
+              <li>当方が本アプリを通じて取得するユーザーの情報（端末情報、広告識別子等）の取り扱いについては、本画面下部に記載する「プライバシーポリシー」に従うものとします。</li>
             </ul>
           </section>
 
@@ -290,12 +301,33 @@ body {
           </section>
 
           <section id="sec9" class="terms-section-item">
-            <h2>第9条（準拠法・裁判管轄）</h2>
+            <h2>第9条（準拠法・裁判管轄・お問い合わせ）</h2>
             <ul class="terms-ul">
               <li>本規約の解釈にあたっては、日本法を準拠法とします。</li>
-              <li>本アプリに関して紛争が生じた場合には、当方の所在地を管轄する簡易裁判所または地方裁判所を専属的合意管轄とします。</li>
+              <li>本アプリに関して紛争が生じた場合には、当方の所在地を管轄する裁判所を専属的合意管轄とします。</li>
+              <li>本アプリに関するお問い合わせやご連絡は、アプリ内の問い合わせ窓口、または当方が指定する連絡先（ストアのデベロッパー連絡先など）より行うものとします。</li>
             </ul>
           </section>
+
+          <!-- プライバシーポリシーセクションの追加 -->
+          <section id="privacy_policy" class="terms-section-item" style="border: 1px solid rgba(33,150,243,0.3); background: linear-gradient(180deg, rgba(33,150,243,0.02), transparent);">
+            <h2>プライバシーポリシー（情報の取り扱い）</h2>
+            <p class="terms-p">当方は、本アプリの提供にあたり、以下の通りユーザーの情報を取り扱います。</p>
+            
+            <p class="terms-p"><strong>1. 広告の配信について</strong><br>
+            本アプリでは、第三者配信の広告サービスを利用して広告を表示しています。これらの広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告（パーソナライズド広告）を表示するため、ユーザーの端末情報、広告識別子、およびCookie等のインフォマティブデータを自動的に取得・利用することがあります。これらのデータは完全に匿名化されており、氏名や住所などの個人を特定する情報は含まれません。</p>
+            
+            <p class="terms-p"><strong>2. 利用状況の解析について</strong><br>
+           本アプリでは、アプリの利用状況や不具合の解析のために第三者ツールを利用しています。これにより収集されるデータも匿名化されており、個人を特定するものではありません。</p>
+
+
+            <p class="terms-p"><strong>3. 法令の遵守と本ポリシーの変更</strong><br>
+            当方は、取得した情報に関して適用される日本の法令を遵守します。また、本ポリシーの内容は必要に応じて適宜見直し、その改善に努めます。変更後のポリシーは、本画面に掲載された時点から効力を生じるものとします。</p>
+          </section>
+
+          <p class="date-text">
+            改訂日：2026年5月30日
+          </p>
 
         </div>
       </div>
