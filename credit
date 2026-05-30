@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>クレジット</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=DM+Mono:wght@400;500&family=Syne:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+/* リセットCSSと変数定義 */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --surface2: #edf0f4;
+  --border: rgba(15,23,42,0.08);
+  --border2: rgba(15,23,42,0.12);
+  --text: #111827;
+  --muted: #505763;
+  --accent: #2196F3;
+  --accent-dim: #6a9de8;
+  --r: 12px;
+  --r-sm: 8px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* WebViewでスクロールバグが起きないよう標準的な文書フローに */
+body {
+  font-family: 'Noto Serif JP', serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: clamp(1rem, 4vw, 2.5rem);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 中央寄せの設定 */
+.shell {
+  width: min(100%, 92vw);
+  max-width: 880px;
+  margin: 0 auto; 
+  animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER */
+.hd {
+  padding: clamp(1.5rem, 5vw, 2.25rem) clamp(1.25rem, 5vw, 2rem) 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: var(--r) var(--r) 0 0;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--accent-dim);
+  border: 1px solid rgba(33,150,243,0.18);
+  padding: 3px 10px;
+  border-radius: 99px;
+  margin-bottom: 1rem;
+}
+
+.tag-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.hd h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.hd p {
+  font-size: clamp(13px, 2.5vw, 14px);
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* BODY */
+.body {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0 0 var(--r) var(--r);
+  padding: clamp(1.25rem, 5vw, 2rem);
+}
+
+/* WebView用に自然に下までスクロールさせる設計 */
+.scroll-box {
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  background: var(--bg);
+  padding: 16px;
+}
+
+.terms-section { margin-bottom: 1.25rem; }
+.terms-section:last-child { margin-bottom: 0; }
+
+.terms-p {
+  font-size: clamp(12px, 2.5vw, 13px);
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.terms-ul {
+  list-style: none;
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.terms-ul li {
+  font-size: clamp(12px, 2.5vw, 13px);
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.credit-role {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 13px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.credit-role::before { 
+  content: '•'; 
+  color: var(--accent-dim); 
+}
+
+.credit-name {
+  padding-left: 18px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* 目次とセクション */
+.toc {
+  background: linear-gradient(180deg, rgba(33,150,243,0.04), transparent);
+  border: 1px solid rgba(33,150,243,0.08);
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.toc h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.toc ul { list-style: none; padding-left: 0; display: flex; flex-direction: column; gap: 6px; }
+.toc a { text-decoration: none; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 13px; }
+
+.terms-section-item {
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,250,252,0.6));
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+.terms-section-item:last-child {
+  margin-bottom: 0;
+}
+
+.terms-section-item h2 {
+  font-size: 16px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+@media (max-width: 420px) {
+  body { padding: 0; }
+  .hd, .body { border-radius: 0; border-left: none; border-right: none; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="shell">
+  <div id="mainView">
+    <div class="hd">
+      <div class="tag">
+        <span class="tag-dot"></span>
+        クレジット
+      </div>
+      <h1>制作一覧</h1>
+    </div>
+
+    <div class="body">
+      <div class="scroll-box">
+
+        <section id="sec0" class="terms-section-item">
+          <p class="terms-p">更新：2026/05/30</p>
+        </section>
+        
+        <nav class="toc" aria-label="目次">
+          <h3>目次</h3>
+          <ul>
+            <li><a href="#sec1">制作スタッフ</a></li>
+          </ul>
+        </nav>
+
+        <div class="terms-section">
+          <section id="sec1" class="terms-section-item">
+            <h2>制作</h2>
+            <ul class="terms-ul">
+              <li>
+                <div class="credit-role">監修</div>
+                <div class="credit-name">SUZUKI</div>
+              </li>
+              <li>
+                <div class="credit-role">3Dモデル制作</div>
+                <div class="credit-name">KO</div>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
