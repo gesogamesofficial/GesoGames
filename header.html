@@ -1,0 +1,61 @@
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<button id="menu-toggle" class="fixed top-6 right-6 z-50 p-2 flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none" aria-label="メニュー開閉">
+    <span id="line1" class="w-6 h-px bg-black transition-transform duration-300"></span>
+    <span id="line2" class="w-6 h-px bg-black transition-transform duration-300"></span>
+</button>
+
+<div id="overlay" class="fixed inset-0 bg-black/5 opacity-0 pointer-events-none transition-opacity duration-300 z-30"></div>
+
+<aside id="sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen bg-white border-r border-gray-100 flex flex-col justify-between p-8 transition-transform duration-300 -translate-x-full">
+    <div class="flex flex-col space-y-12 mt-8">
+        <div class="text-xs font-bold tracking-[0.3em] uppercase">GesoGames</div>
+        <nav class="flex flex-col space-y-6">
+            <a href="https://gesogamesofficial.github.io/GesoGames" class="text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-black transition">Top</a>
+            <a href="https://gesogamesofficial.github.io/GesoGames/Accel/top" class="text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-black transition">Accel</a>
+            <a href="https://gesogamesofficial.github.io/GesoGames/Shuchu/top" class="text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-black transition">1分集中</a>
+        </nav>
+    </div>
+    <div>
+        <span class="text-[9px] uppercase tracking-[0.3em] text-gray-300">© 2026 GesoGames</span>
+    </div>
+</aside>
+
+<script>
+  // DOMの読み込み完了を待ってから実行（論理的エラー防止）
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const line1 = document.getElementById('line1');
+    const line2 = document.getElementById('line2');
+
+    function toggleMenu() {
+        const isHidden = sidebar.classList.toggle('-translate-x-full');
+        
+        if (!isHidden) {
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            overlay.classList.add('opacity-100', 'pointer-events-auto');
+        } else {
+            overlay.classList.remove('opacity-100', 'pointer-events-auto');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+        }
+        
+        line1.classList.toggle('rotate-45');
+        line1.classList.toggle('translate-y-[3.5px]');
+        line2.classList.toggle('-rotate-45');
+        line2.classList.toggle('-translate-y-[3.5px]');
+    }
+
+    if (menuToggle && overlay) {
+        menuToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+    }
+  });
+</script>
