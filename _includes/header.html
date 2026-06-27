@@ -1,9 +1,9 @@
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HSMFYJF513"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('config', 'G-HSMFYJF513');
 </script>
 
 <button id="menu-toggle" class="fixed top-6 right-6 z-50 p-2 flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none" aria-label="メニュー開閉">
@@ -28,34 +28,30 @@
 </aside>
 
 <script>
-  // DOMの読み込み完了を待ってから実行（論理的エラー防止）
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.getElementById('menu-toggle');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    const line1 = document.getElementById('line1');
-    const line2 = document.getElementById('line2');
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
 
-    function toggleMenu() {
-        const isHidden = sidebar.classList.toggle('-translate-x-full');
-        
-        if (!isHidden) {
-            overlay.classList.remove('opacity-0', 'pointer-events-none');
-            overlay.classList.add('opacity-100', 'pointer-events-auto');
-        } else {
-            overlay.classList.remove('opacity-100', 'pointer-events-auto');
-            overlay.classList.add('opacity-0', 'pointer-events-none');
+        function toggleMenu() {
+            const isHidden = sidebar.classList.toggle('-translate-x-full');
+            if (!isHidden) {
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                overlay.classList.remove('opacity-100', 'pointer-events-auto');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+            }
+            line1.classList.toggle('rotate-45');
+            line1.classList.toggle('translate-y-[3.5px]');
+            line2.classList.toggle('-rotate-45');
+            line2.classList.toggle('-translate-y-[3.5px]');
         }
-        
-        line1.classList.toggle('rotate-45');
-        line1.classList.toggle('translate-y-[3.5px]');
-        line2.classList.toggle('-rotate-45');
-        line2.classList.toggle('-translate-y-[3.5px]');
-    }
-
-    if (menuToggle && overlay) {
-        menuToggle.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
-    }
-  });
+        if (menuToggle && overlay) {
+            menuToggle.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', toggleMenu);
+        }
+    });
 </script>
