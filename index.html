@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GesoGames</title>
+    <link rel="icon" type="image/png" href="/GesoGames.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +49,6 @@
     </style>
 </head>
     
-    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSMFYJF513"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -58,31 +58,46 @@
   gtag('config', 'G-HSMFYJF513');
 </script>
     
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen relative">
 
-    <!-- Main Content -->
+    <button id="menu-toggle" class="fixed top-6 right-6 z-50 p-2 flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none" aria-label="メニュー開閉">
+        <span id="line1" class="w-6 h-px bg-black transition-transform duration-300"></span>
+        <span id="line2" class="w-6 h-px bg-black transition-transform duration-300"></span>
+    </button>
+
+    <div id="overlay" class="fixed inset-0 bg-black/5 opacity-0 pointer-events-none transition-opacity duration-300 z-30"></div>
+
+    <aside id="sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen bg-white border-r border-gray-100 flex flex-col justify-between p-8 transition-transform duration-300 -translate-x-full">
+        <div class="flex flex-col space-y-12 mt-8">
+            <div class="text-xs font-bold tracking-[0.3em] uppercase">GesoGames</div>
+            <nav class="flex flex-col space-y-6">
+                <a href="https://gesogamesofficial.github.io/GesoGames" class="text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-black transition">Top</a>
+                <a href="https://gesogamesofficial.github.io/GesoGames/Accel/top" class="text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-black transition">Accel</a>
+                <a href="https://gesogamesofficial.github.io/GesoGames/Shuchu/top" class="text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-black transition">Games</a>
+            </nav>
+        </div>
+        <div>
+            <span class="text-[9px] uppercase tracking-[0.3em] text-gray-300">© 2026 GesoGames</span>
+        </div>
+    </aside>
+
     <main class="flex-grow flex flex-col items-center justify-center px-6">
         
-        <!-- Animated Logo -->
-        <div class="logo-container mb-16">
-            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="85" stroke="black" stroke-width="1.5" class="line-draw" />
-                <circle cx="100" cy="100" r="78" stroke="black" stroke-width="0.5" class="line-draw" style="animation-delay: 0.3s;" />
-                <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="34" fill="black" style="letter-spacing: 0.15em;" class="reveal delay-1">GESO</text>
-            </svg>
+        <div class="logo-container mb-16 reveal delay-1">
+            <img src="https://gesogamesofficial.github.io/GesoGames/GesoGames.png" alt="GesoGames" class="w-full h-auto block mx-auto">
         </div>
 
-        <!-- Identity Section -->
         <div class="text-center max-w-xl mx-auto">
             <h1 class="text-xs uppercase tracking-[0.5em] text-gray-400 mb-8 reveal delay-2">Game Design Studio</h1>
             <p class="text-xl md:text-2xl font-light leading-relaxed reveal delay-3 px-4">
-                体験にコミットする<br>
+                <strong>
+                    体験にコミットする
+                </strong><br>
                 GesoGamesは、純粋な思考と直感による<br class="hidden md:block">
                 特別なゲーム空間を提供します。
             </p>
         </div>
 
-        <!-- Interaction / Footer Link -->
         <div class="mt-24 flex flex-col items-center reveal" style="animation-delay: 1s;">
             <div class="w-px h-12 bg-gray-200 mb-8"></div>
             <a href="mailto:info@gesogames.example.com" class="text-sm tracking-[0.2em] uppercase border-b border-transparent hover:border-black transition-all pb-1">
@@ -91,13 +106,43 @@
         </div>
     </main>
 
-    <!-- Social / Simple Footer -->
     <footer class="py-12 px-6 flex justify-center space-x-12 reveal" style="animation-delay: 1.2s;">
         <a href="https://www.youtube.com/@GesoGames" target="_blank" class="text-[10px] uppercase tracking-[0.3em] text-gray-400 hover:text-black transition">Youtube</a>
         <a href="https://x.com/GesoOfficial" target="_blank" class="text-[10px] uppercase tracking-[0.3em] text-gray-400 hover:text-black transition">X</a>
-        <a href="https://www.instagram.com/gesogames.official/?hl=ja" target="_blank" class="text-[10px] uppercase tracking-[0.3em] text-gray-400 hover:text-black transition">Instaglam</a>
-        <span class="text-[10px] uppercase tracking-[0.3em] text-gray-300">© 2026 GesoGames</span>
+        <a href="https://www.instagram.com/gesogames.official/?hl=ja" target="_blank" class="text-[10px] uppercase tracking-[0.3em] text-gray-400 hover:text-black transition">Instagram</a>
     </footer>
 
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+
+        // 開閉処理の関数
+        function toggleMenu() {
+            const isHidden = sidebar.classList.toggle('-translate-x-full');
+            
+            if (!isHidden) {
+                // オン（表示）のとき
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                // オフ（非表示）のとき
+                overlay.classList.remove('opacity-100', 'pointer-events-auto');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+            }
+            
+            // ボタンを「✕」に変形
+            line1.classList.toggle('rotate-45');
+            line1.classList.toggle('translate-y-[3.5px]');
+            line2.classList.toggle('-rotate-45');
+            line2.classList.toggle('-translate-y-[3.5px]');
+        }
+
+        // ボタンクリック、または背景の暗がり（オーバーレイ）クリックでトグル
+        menuToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+    </script>
 </body>
 </html>
