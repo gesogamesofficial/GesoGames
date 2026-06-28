@@ -49,6 +49,124 @@ layout: null
         @keyframes draw {
             to { stroke-dashoffset: 0; }
         }
+
+        /* --- Works スライドショー --- */
+        .works-slideshow {
+            max-width: 600px;
+            width: calc(100% - 48px);
+            margin: 0 auto;
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 32px 64px rgba(0,0,0,0.12);
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+        .works-slide {
+            display: none;
+            position: relative;
+            aspect-ratio: 16/9;
+            background: #0a0b0d;
+        }
+        .works-slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        .works-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .works-slide-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.08);
+            background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+        }
+        .works-slide-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 40px 28px 28px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.88));
+        }
+        .works-slide-caption .slide-num {
+            font-size: 10px;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 6px;
+        }
+        .works-slide-caption h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .works-slide-caption p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+        }
+        .works-slide-link {
+            display: inline-block;
+            margin-top: 14px;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 2px;
+            text-decoration: none;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .works-slide-link:hover {
+            color: #fff;
+            border-color: #fff;
+        }
+        .works-btn {
+            position: absolute;
+            top: 50%; transform: translateY(-50%);
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.45);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.25s;
+            z-index: 10;
+            backdrop-filter: blur(8px);
+        }
+        .works-btn:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); }
+        .works-btn.prev { left: 16px; }
+        .works-btn.next { right: 16px; }
+        .works-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 24px;
+        }
+        .works-dots .dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.12);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .works-dots .dot.active {
+            background: #1a1a1a;
+            transform: scale(1.2);
+        }
     </style>
 </head>
     
@@ -69,13 +187,60 @@ layout: null
             </p>
         </div>
 
-        <div class="mt-24 flex flex-col items-center reveal" style="animation-delay: 1s;">
-            <div class="w-px h-12 bg-gray-200 mb-8"></div>
-            <a href="mailto:info@gesogames.example.com" class="text-sm tracking-[0.2em] uppercase border-b border-transparent hover:border-black transition-all pb-1">
-                Coming soon...
-            </a>
+        <div class="mt-24 flex flex-col items-center reveal w-full" style="animation-delay: 1s;">
+            <div class="w-px h-12 bg-gray-200 mb-12"></div>
+            <p class="text-[10px] uppercase tracking-[0.4em] text-gray-300 mb-10">Works</p>
+
+            <!-- Accel スタイルのスライドショー -->
+            <div class="works-slideshow">
+                <button class="works-btn prev" onclick="worksChangeSlide(-1)">&#10094;</button>
+                <button class="works-btn next" onclick="worksChangeSlide(1)">&#10095;</button>
+
+                <!-- slide 01: Accel -->
+                <div class="works-slide active">
+                    <img src="https://gesogamesofficial.github.io/GesoGames/Accel/ScreenShot.png" alt="Accel">
+                    <div class="works-slide-caption">
+                        <p class="slide-num">01</p>
+                        <h3>Accel</h3>
+                        <p>車知識クイズゲーム</p>
+                        <a href="https://gesogamesofficial.github.io/GesoGames/Accel/top" class="works-slide-link">View →</a>
+                    </div>
+                </div>
+
+                <!-- slide 02: 1分集中 -->
+                <div class="works-slide">
+                    <div class="works-slide-placeholder">GG</div>
+                    <div class="works-slide-caption">
+                        <p class="slide-num">02</p>
+                        <h3>1分集中</h3>
+                        <p>集中力トレーニング</p>
+                        <a href="https://gesogamesofficial.github.io/GesoGames/Shuchu/app.html" class="works-slide-link">View →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="works-dots">
+                <span class="dot active" onclick="worksGoToSlide(0)"></span>
+                <span class="dot" onclick="worksGoToSlide(1)"></span>
+            </div>
         </div>
     </main>
+
+    <script>
+        let worksIndex = 0;
+        const worksSlides = document.querySelectorAll('.works-slide');
+        const worksDots   = document.querySelectorAll('.works-dots .dot');
+
+        function worksShowSlide(n) {
+            worksSlides.forEach(s => s.classList.remove('active'));
+            worksDots.forEach(d => d.classList.remove('active'));
+            worksIndex = (n + worksSlides.length) % worksSlides.length;
+            worksSlides[worksIndex].classList.add('active');
+            worksDots[worksIndex].classList.add('active');
+        }
+        function worksChangeSlide(dir) { worksShowSlide(worksIndex + dir); }
+        function worksGoToSlide(n)     { worksShowSlide(n); }
+    </script>
 
     <footer class="py-12 px-6 flex justify-center space-x-12 reveal" style="animation-delay: 1.2s;">
         <a href="https://www.youtube.com/@GesoGames" target="_blank" class="text-[10px] uppercase tracking-[0.3em] text-gray-400 hover:text-black transition">Youtube</a>
