@@ -9,6 +9,8 @@ layout: null
     <title>Accel公式サイト</title>
     <!-- アイコン用のFontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 共通ヘッダー（ハンバーガー＆サイドバー）用 Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* --- 全体スタイル --- */
         * {
@@ -680,20 +682,7 @@ layout: null
     </style>
 </head>
 <body>
-    {% include header.html %}
-    <!-- ナビゲーションヘッダー -->
-    <header class="site-header">
-        <div class="container header-wrap">
-            <!-- 大文字・小文字がそのまま表現されます -->
-            <div class="logo">Accel<span>.</span></div>
-            <ul class="nav-menu">
-                <li><a href="#" class="active">ホーム</a></li>
-                <li><a href="#">遊び方</a></li>
-                <li><a href="https://gesogamesofficial.github.io/GesoGames/Accel/privacy">プライバシーポリシー</a></li>
-                <li><a href="https://gesogamesofficial.github.io/GesoGames/Accel/credit">クレジット</a></li>
-            </ul>
-        </div>
-    </header>
+    {% include header.html menu_color="white" %}
 
     <!-- メイン・ヒーローセクション -->
     <section class="hero">
