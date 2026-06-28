@@ -6,9 +6,10 @@
   gtag('config', 'G-HSMFYJF513');
 </script>
 
+{% assign menu_color = include.menu_color | default: "black" %}
 <button id="menu-toggle" class="fixed top-6 right-6 z-50 p-2 flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none" aria-label="メニュー開閉">
-    <span id="line1" class="w-6 h-px bg-black transition-transform duration-300"></span>
-    <span id="line2" class="w-6 h-px bg-black transition-transform duration-300"></span>
+    <span id="line1" class="w-6 h-px bg-{{ menu_color }} transition-transform duration-300"></span>
+    <span id="line2" class="w-6 h-px bg-{{ menu_color }} transition-transform duration-300"></span>
 </button>
 
 <div id="overlay" class="fixed inset-0 bg-black/5 opacity-0 pointer-events-none transition-opacity duration-300 z-30"></div>
